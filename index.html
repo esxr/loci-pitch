@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loci — Mind Palace Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --c1:#111; --c2:#151515; --c3:#1a1a1a;
+  --b1:#1e1e1e; --b2:#2a2a2a;
+  --tx:#f0f0ee; --t2:#999; --mu:#555; --di:#2e2e2e;
+  --ac:#00d4aa; --ac2:#8b5cf6; --am:#d4891a; --rd:#e05a4e;
+  --f:'Inter',sans-serif; --m:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-thumb{background:var(--b2)}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:48px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;background:rgba(10,10,10,.96);
+  border-bottom:1px solid var(--b1);backdrop-filter:blur(10px)
+}
+.nl{display:flex;align-items:center;gap:9px}
+.lb{width:26px;height:26px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-family:var(--m);font-size:9px;font-weight:700;color:#0a0a0a;flex-shrink:0;border-radius:4px}
+.ln{font-size:13px;font-weight:700;letter-spacing:.02em}
+.ld{color:var(--b2);margin:0 5px}
+.lt{font-family:var(--m);font-size:8.5px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase}
+.nr{display:flex;align-items:center;gap:8px}
+.nds{display:flex;gap:5px}
+.nd{width:5px;height:5px;border-radius:50%;background:var(--di);border:none;cursor:pointer;transition:.2s}
+.nd.on{background:var(--ac);transform:scale(1.5)}
+.nd:hover:not(.on){background:var(--mu)}
+.nn{font-family:var(--m);font-size:8.5px;color:var(--mu);min-width:24px;text-align:right}
+
+/* SLIDES */
+.slide{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:68px 48px 48px;border-bottom:1px solid var(--b1);
+  opacity:0;transform:translateY(10px);
+  transition:opacity .5s ease,transform .5s ease
+}
+.slide.in{opacity:1;transform:none}
+
+/* SLIDE LABEL */
+.sl{
+  font-family:var(--m);font-size:9px;color:var(--mu);
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:22px;display:flex;align-items:center;gap:8px
+}
+.sl .dot{width:3px;height:3px;border-radius:50%;background:var(--ac)}
+.sl .acc{color:var(--ac)}
+
+/* HEADLINE SYSTEM */
+h1{font-size:clamp(52px,7vw,96px);font-weight:900;line-height:1;letter-spacing:-.04em}
+h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spacing:-.03em;margin-bottom:8px}
+.ac{color:var(--ac)} .p{color:var(--ac2)} .a{color:var(--am)} .r{color:var(--rd)}
+.tag{font-size:13px;color:var(--t2);margin-bottom:28px;line-height:1.5}
+
+/* STAT ROW */
+.stats{display:flex;border:1px solid var(--b1);margin-top:24px;width:fit-content}
+.st{padding:14px 22px;border-right:1px solid var(--b1)}
+.st:last-child{border-right:none}
+.sn{font-family:var(--m);font-size:20px;font-weight:600;color:var(--ac);line-height:1;margin-bottom:3px}
+.sl2{font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase}
+
+/* PILL */
+.pill{display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(0,212,170,.25);background:rgba(0,212,170,.06);padding:4px 10px;font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.pd{width:4px;height:4px;border-radius:50%;background:var(--ac);animation:bk 2s infinite}
+@keyframes bk{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b1);border:1px solid var(--b1)}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--b1);border:1px solid var(--b1)}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b1);border:1px solid var(--b1)}
+.card{background:var(--c1);padding:20px 18px}
+.big{font-size:36px;font-weight:800;color:var(--ac);line-height:1;letter-spacing:-.03em;margin-bottom:5px}
+.ct{font-size:12px;font-weight:600;margin-bottom:3px}
+.cd{font-size:11px;color:var(--mu);line-height:1.5}
+.cs{font-family:var(--m);font-size:7.5px;color:var(--di);margin-top:6px}
+
+/* TWO COL */
+.tc{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+
+/* BAR */
+.br{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bl{font-size:11px;color:var(--t2);width:140px;flex-shrink:0}
+.bt{flex:1;height:4px;background:var(--c3);border-radius:1px;overflow:hidden}
+.bf{height:100%;border-radius:1px}
+.bv{font-family:var(--m);font-size:9.5px;color:var(--ac);width:60px;flex-shrink:0;text-align:right}
+
+/* STRIP */
+.strip{background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.18);padding:10px 14px;font-size:11px;color:var(--t2);line-height:1.6}
+.stag{font-family:var(--m);font-size:8px;color:var(--ac);font-weight:500;margin-right:4px}
+
+/* ROWS */
+.rows{display:flex;flex-direction:column;gap:1px}
+.row{display:flex;background:var(--c1);border:1px solid var(--b1)}
+.rph{min-width:80px;padding:12px 14px;border-right:1px solid var(--b1);display:flex;flex-direction:column;justify-content:center}
+.rpn{font-family:var(--m);font-size:7px;color:var(--mu);letter-spacing:.1em;margin-bottom:2px}
+.rpt{font-size:12px;font-weight:700;color:var(--ac)}
+.rb{flex:1;padding:12px 14px}
+.rt{font-size:11px;font-weight:600;margin-bottom:2px}
+.rd2{font-size:10px;color:var(--mu);line-height:1.5}
+
+/* CODE */
+.code{background:var(--c2);border:1px solid var(--b1);padding:12px 14px;font-family:var(--m);font-size:9.5px;color:var(--t2);line-height:1.9}
+.kw{color:var(--ac)}.st2{color:var(--tx)}.cm{color:var(--mu)}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:11px;border:1px solid var(--b1)}
+.tbl th{font-family:var(--m);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);padding:9px 11px;text-align:left;border-bottom:1px solid var(--b1);background:var(--c2)}
+.tbl td{padding:10px 11px;border-bottom:1px solid var(--b1);color:var(--t2);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr.hl td{background:rgba(0,212,170,.07)}
+.tbl tr.hl td:first-child{color:var(--ac);font-weight:700}
+.ok{color:var(--ac);font-family:var(--m);font-size:10px}
+.no{color:var(--di);font-family:var(--m);font-size:10px}
+.my{color:var(--am);font-family:var(--m);font-size:10px}
+
+/* BENCH */
+.bg2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b1);border:1px solid var(--b1)}
+.bench{background:var(--c1);padding:24px 26px}
+.bname{font-size:11px;font-weight:600;margin-bottom:2px}
+.bsub{font-family:var(--m);font-size:8px;color:var(--mu);margin-bottom:10px}
+.bbig{font-size:clamp(40px,5vw,58px);font-weight:900;color:var(--ac);line-height:1;letter-spacing:-.03em;margin-bottom:6px}
+.bbar{height:2px;background:var(--ac);margin-bottom:8px}
+.bdesc{font-size:10px;color:var(--mu);line-height:1.5}
+
+/* VAL */
+.val{display:flex;align-items:center;gap:7px;font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.12em;text-transform:uppercase;margin-top:14px}
+.vl{width:2px;height:11px;background:var(--ac);flex-shrink:0}
+
+/* GLOW */
+.glow{position:relative;overflow:hidden}
+.glow::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(0,212,170,.04) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(139,92,246,.03) 0%,transparent 50%);pointer-events:none}
+
+/* THEME CARD */
+.theme-card{background:var(--c1);padding:18px;position:relative;overflow:hidden}
+.theme-card .tstrip{position:absolute;top:0;left:0;right:0;height:3px}
+.theme-name{font-size:13px;font-weight:700;margin-bottom:4px;margin-top:8px}
+.theme-desc{font-size:10px;color:var(--mu);line-height:1.5}
+.theme-palette{display:flex;gap:3px;margin-top:8px}
+.theme-swatch{width:14px;height:14px;border-radius:2px}
+
+/* FLOW */
+.flow-step{display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--c1);border:1px solid var(--b1);margin-bottom:1px}
+.flow-num{font-family:var(--m);font-size:22px;font-weight:700;color:var(--ac);width:40px;flex-shrink:0;text-align:center}
+.flow-arrow{font-family:var(--m);font-size:14px;color:var(--b2);text-align:center;padding:4px 0}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .slide{padding:64px 20px 40px}
+  nav{padding:0 16px}
+  h1{font-size:44px}
+  h2{font-size:22px}
+  .g4,.g3,.g2,.tc,.bg2{grid-template-columns:1fr}
+  .stats{flex-direction:column;width:100%}
+  .st{border-right:none;border-bottom:1px solid var(--b1)}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nl">
+    <div class="lb">L</div>
+    <span class="ln">Loci</span>
+    <span class="ld">|</span>
+    <span class="lt">CSIRO Hackathon 2026</span>
+  </div>
+  <div class="nr">
+    <div class="nds" id="dots"></div>
+    <div class="nn" id="num">01</div>
+  </div>
+</nav>
+
+<!-- 01 TITLE -->
+<section class="slide glow" id="s1" style="align-items:center;text-align:center;gap:0">
+  <div class="pill"><div class="pd"></div>CSIRO Challenge 2026</div>
+
+  <h1 style="font-size:clamp(72px,12vw,140px);margin-bottom:6px;letter-spacing:-.05em">
+    <span class="ac">Loci</span>
+  </h1>
+
+  <div style="font-size:clamp(16px,2.2vw,26px);font-weight:500;color:var(--t2);letter-spacing:-.01em;margin-bottom:20px">
+    Turn your notes into <span style="color:var(--ac)">walkable 3D mind palaces</span>
+  </div>
+
+  <div style="font-size:14px;color:var(--mu);max-width:520px;line-height:1.6;margin-bottom:0">
+    An Obsidian plugin that transforms study notes into explorable,<br>AI-powered voxel worlds — where walking the palace is walking the knowledge graph.
+  </div>
+
+  <div class="stats">
+    <div class="st"><div class="sn">&lt;60s</div><div class="sl2">Map Generation</div></div>
+    <div class="st"><div class="sn">50+</div><div class="sl2">Concepts Per Map</div></div>
+    <div class="st"><div class="sn">6</div><div class="sl2">Themed Worlds</div></div>
+    <div class="st"><div class="sn">30+</div><div class="sl2">FPS in Browser</div></div>
+    <div class="st"><div class="sn">AI</div><div class="sl2">NPC Guides</div></div>
+  </div>
+
+  <div class="val" style="justify-content:center">
+    <div class="vl"></div>
+    METHOD OF LOCI &middot; SPATIAL MEMORY &middot; PROCEDURAL GENERATION
+  </div>
+</section>
+
+<!-- 02 THE PROBLEM -->
+<section class="slide" id="s2">
+  <div class="sl"><span>02 / 10</span><div class="dot"></div><span>Problem</span><div class="dot"></div><span class="acc">The Learning Gap</span></div>
+  <h2>Students read notes.<br><span class="ac">They don't remember them.</span></h2>
+  <p class="tag">The most powerful memorisation technique exists but almost nobody can use it — until now.</p>
+
+  <div class="tc">
+    <div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">The passive learning crisis</div>
+      <div class="br"><span class="bl">Re-reading retention</span><div class="bt"><div class="bf" style="width:18%;background:var(--rd)"></div></div><span class="bv" style="color:var(--rd)">10-20%</span></div>
+      <div class="br"><span class="bl">Highlighting retention</span><div class="bt"><div class="bf" style="width:22%;background:var(--rd)"></div></div><span class="bv" style="color:var(--rd)">~20%</span></div>
+      <div class="br"><span class="bl">Active recall</span><div class="bt"><div class="bf" style="width:55%;background:var(--am)"></div></div><span class="bv" style="color:var(--am)">50-60%</span></div>
+      <div class="br"><span class="bl" style="color:var(--ac)">Method of Loci</span><div class="bt"><div class="bf" style="width:90%;background:var(--ac)"></div></div><span class="bv">~90%</span></div>
+
+      <div class="strip" style="margin-top:16px">
+        <span class="stag">THE BARRIER &mdash;</span>The Method of Loci requires users to mentally construct spatial environments and place concepts within them. This skill barrier prevents most students from ever using it.
+        <div style="font-family:var(--m);font-size:7px;color:var(--di);margin-top:4px">Dresler et al. 2017 &middot; Neuron</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+      <div class="card">
+        <div style="font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">Karpicke &amp; Blunt 2011</div>
+        <div class="big">67%</div>
+        <div class="ct">more material recalled with spatial encoding</div>
+        <div class="cd">vs. concept mapping and re-reading combined</div>
+      </div>
+      <div class="card">
+        <div class="big">2,500+</div>
+        <div class="ct">years of proven use</div>
+        <div class="cd">From ancient Greek orators to modern memory champions</div>
+      </div>
+      <div class="card">
+        <div class="big" style="color:var(--rd)">&lt;2%</div>
+        <div class="ct">of students use spatial memory techniques</div>
+        <div class="cd">Too hard to build palaces mentally. Too abstract to start.</div>
+        <div class="cs">McCabe 2011</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CHALLENGE -->
+<section class="slide" id="s3">
+  <div class="sl"><span>03 / 10</span><div class="dot"></div><span>Challenge</span><div class="dot"></div><span class="acc">CSIRO</span></div>
+  <h2>Creating immersive, AI-driven<br>learning through <span class="ac">3D world-building.</span></h2>
+
+  <div style="border:1px solid rgba(0,212,170,.25);background:rgba(0,212,170,.04);padding:22px 26px;margin-bottom:20px;max-width:800px">
+    <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">CSIRO Challenge Statement</div>
+    <div style="font-size:15px;font-weight:500;color:var(--tx);line-height:1.6;font-style:italic">
+      "How might we create an immersive and interactive AI-driven learning experience where young children create and interact with their own 3D worlds, fostering creativity, artistic expression, and imagination?"
+    </div>
+  </div>
+
+  <div class="g4">
+    <div class="card" style="border-top:2px solid var(--ac)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">3D Worlds</div>
+      <div class="ct">Students build and explore</div>
+      <div class="cd">Each set of notes becomes a unique, walkable voxel environment</div>
+    </div>
+    <div class="card" style="border-top:2px solid var(--ac2)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">AI Partner</div>
+      <div class="ct">Guides, not generates</div>
+      <div class="cd">NPC guides powered by LLM engage in Socratic dialogue grounded in source material</div>
+    </div>
+    <div class="card" style="border-top:2px solid var(--am)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Creation Loop</div>
+      <div class="ct">Build &rarr; explore &rarr; learn</div>
+      <div class="cd">Notes evolve into spatial maps, iterated and revisited over time</div>
+    </div>
+    <div class="card" style="border-top:2px solid var(--tx)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--tx);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Accessible</div>
+      <div class="ct">Zero setup, runs in browser</div>
+      <div class="cd">No installs, no plugins, no 3D expertise. Just notes and a browser.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 VISION -->
+<section class="slide glow" id="s4">
+  <div class="sl"><span>04 / 10</span><div class="dot"></div><span>Vision</span><div class="dot"></div><span class="acc">The Big Idea</span></div>
+  <h2>Walking the palace<br><span class="ac">is walking the knowledge graph.</span></h2>
+  <p class="tag">Related concepts live in adjacent rooms. Important concepts get larger spaces. The spatial layout mirrors your understanding.</p>
+
+  <div class="tc">
+    <div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">From notes to navigable space</div>
+
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:2px">Select notes in Obsidian</div>
+            <div style="font-size:10px;color:var(--mu)">Choose which notes define your map boundary</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:2px">AI extracts knowledge graph</div>
+            <div style="font-size:10px;color:var(--mu)">Concepts, relationships, importance &mdash; all structured automatically</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:2px">Procedural 3D world generates</div>
+            <div style="font-size:10px;color:var(--mu)">Rooms, corridors, artifacts &mdash; topology mirrors concept relationships</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+        <div class="flow-step" style="border-color:rgba(0,212,170,.3)">
+          <div class="flow-num" style="color:var(--ac)">04</div>
+          <div>
+            <div style="font-size:12px;font-weight:700;margin-bottom:2px;color:var(--ac)">Walk, explore, remember</div>
+            <div style="font-size:10px;color:var(--mu)">WASD controls, NPC dialogue, spatial memory at work</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Spatial encoding principles</div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
+        <div class="card" style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--ac);width:32px;flex-shrink:0;text-align:center">&harr;</div>
+          <div>
+            <div class="ct">Adjacency = Relatedness</div>
+            <div class="cd">Linked concepts are placed in neighbouring rooms</div>
+          </div>
+        </div>
+        <div class="card" style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--ac2);width:32px;flex-shrink:0;text-align:center">&square;</div>
+          <div>
+            <div class="ct">Size = Importance</div>
+            <div class="cd">Core concepts get larger, more prominent spaces</div>
+          </div>
+        </div>
+        <div class="card" style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--am);width:32px;flex-shrink:0;text-align:center">&cir;</div>
+          <div>
+            <div class="ct">Clusters = Topic Groups</div>
+            <div class="cd">Related concepts form natural zones within the palace</div>
+          </div>
+        </div>
+        <div class="card" style="display:flex;align-items:center;gap:14px">
+          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--tx);width:32px;flex-shrink:0;text-align:center">&diam;</div>
+          <div>
+            <div class="ct">Artifacts = Concepts</div>
+            <div class="cd">AI-generated 3D objects placed on pedestals represent each idea</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span class="stag">KEY INSIGHT &mdash;</span>Students don't need to imagine a palace anymore. <strong style="color:var(--tx)">The AI builds it from their own notes.</strong> They just walk through it.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 EXPERIENCE -->
+<section class="slide" id="s5">
+  <div class="sl"><span>05 / 10</span><div class="dot"></div><span>Experience</span><div class="dot"></div><span class="acc">Themed Worlds</span></div>
+  <h2>Six immersive themes.<br><span class="ac">Same knowledge, different worlds.</span></h2>
+  <p class="tag">Each theme transforms the entire environment &mdash; textures, lighting, particles, NPC style, ambient atmosphere.</p>
+
+  <div class="g3" style="margin-bottom:16px">
+    <div class="theme-card">
+      <div class="tstrip" style="background:linear-gradient(90deg,#4ade80,#22c55e)"></div>
+      <div class="theme-name" style="color:#4ade80">Nature / Garden</div>
+      <div class="theme-desc">Minecraft-style terrain with trees, grass, rivers, and stone paths. Concepts grow like natural formations.</div>
+      <div class="theme-palette">
+        <div class="theme-swatch" style="background:#4ade80"></div>
+        <div class="theme-swatch" style="background:#92400e"></div>
+        <div class="theme-swatch" style="background:#7dd3fc"></div>
+        <div class="theme-swatch" style="background:#65a30d"></div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tstrip" style="background:linear-gradient(90deg,#f97316,#ef4444)"></div>
+      <div class="theme-name" style="color:#f97316">Lava Underground</div>
+      <div class="theme-desc">Volcanic caverns, magma rivers, obsidian walls. Glowing crystals illuminate concept artifacts.</div>
+      <div class="theme-palette">
+        <div class="theme-swatch" style="background:#ef4444"></div>
+        <div class="theme-swatch" style="background:#f97316"></div>
+        <div class="theme-swatch" style="background:#1c1917"></div>
+        <div class="theme-swatch" style="background:#a855f7"></div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tstrip" style="background:linear-gradient(90deg,#6b7280,#3b82f6)"></div>
+      <div class="theme-name" style="color:#94a3b8">Cityscape</div>
+      <div class="theme-desc">Urban rooftops, neon-lit alleyways, concrete plazas. Knowledge mapped to city districts.</div>
+      <div class="theme-palette">
+        <div class="theme-swatch" style="background:#6b7280"></div>
+        <div class="theme-swatch" style="background:#3b82f6"></div>
+        <div class="theme-swatch" style="background:#f43f5e"></div>
+        <div class="theme-swatch" style="background:#fbbf24"></div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tstrip" style="background:linear-gradient(90deg,#d97706,#fbbf24)"></div>
+      <div class="theme-name" style="color:#fbbf24">Ancient Library</div>
+      <div class="theme-desc">Grand halls, floor-to-ceiling bookshelves, candlelit chambers. Scholarly atmosphere.</div>
+      <div class="theme-palette">
+        <div class="theme-swatch" style="background:#92400e"></div>
+        <div class="theme-swatch" style="background:#fbbf24"></div>
+        <div class="theme-swatch" style="background:#fef3c7"></div>
+        <div class="theme-swatch" style="background:#78350f"></div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tstrip" style="background:linear-gradient(90deg,#6366f1,#06b6d4)"></div>
+      <div class="theme-name" style="color:#818cf8">Space Station</div>
+      <div class="theme-desc">Metallic corridors, starfield windows, holographic displays. Concepts as floating holograms.</div>
+      <div class="theme-palette">
+        <div class="theme-swatch" style="background:#6366f1"></div>
+        <div class="theme-swatch" style="background:#94a3b8"></div>
+        <div class="theme-swatch" style="background:#06b6d4"></div>
+        <div class="theme-swatch" style="background:#020617"></div>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="tstrip" style="background:linear-gradient(90deg,#0891b2,#7c3aed)"></div>
+      <div class="theme-name" style="color:#22d3ee">Ocean Depths</div>
+      <div class="theme-desc">Underwater temples, coral formations, bioluminescent paths. Knowledge drifts through currents.</div>
+      <div class="theme-palette">
+        <div class="theme-swatch" style="background:#0e7490"></div>
+        <div class="theme-swatch" style="background:#22d3ee"></div>
+        <div class="theme-swatch" style="background:#a855f7"></div>
+        <div class="theme-swatch" style="background:#164e63"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g3">
+    <div style="background:var(--c1);padding:16px 18px;border:1px solid var(--b1)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Exploration</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:3px">First-Person WASD</div>
+      <div style="font-size:10px;color:var(--mu);line-height:1.5">Walk through rooms, discover artifacts, meet NPCs. Minecraft-style voxel aesthetic.</div>
+    </div>
+    <div style="background:var(--c1);padding:16px 18px;border:1px solid var(--b1)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">NPC Guides</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:3px">LLM-Powered Dialogue</div>
+      <div style="font-size:10px;color:var(--mu);line-height:1.5">Each NPC is grounded in source notes. Conversational, streaming responses in real-time.</div>
+    </div>
+    <div style="background:var(--c1);padding:16px 18px;border:1px solid var(--b1)">
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Artifacts</div>
+      <div style="font-size:12px;font-weight:700;margin-bottom:3px">AI-Generated 3D Objects</div>
+      <div style="font-size:10px;color:var(--mu);line-height:1.5">Text-to-3D models represent each concept visually. A DNA helix for genetics, a circuit for electronics.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 TECHNOLOGY -->
+<section class="slide" id="s6">
+  <div class="sl"><span>06 / 10</span><div class="dot"></div><span>Technology</span><div class="dot"></div><span class="acc">Architecture</span></div>
+  <h2>Two components.<br><span class="ac">Zero infrastructure cost.</span></h2>
+  <p class="tag">Obsidian plugin + web app. Everything runs on free tiers.</p>
+
+  <div class="tc">
+    <div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">System Components</div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
+        <div style="background:var(--c1);padding:14px 16px;border-left:3px solid var(--ac)">
+          <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px">Obsidian Plugin</div>
+          <div style="font-size:12px;font-weight:700;margin-bottom:3px">Note Selection &amp; Processing</div>
+          <div style="font-size:10px;color:var(--mu);line-height:1.5">Select notes &rarr; traverse [[wikilinks]] &rarr; extract concept graph via LLM &rarr; send to backend</div>
+        </div>
+        <div style="background:var(--c2);padding:14px 16px;border-left:3px solid var(--ac2)">
+          <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px">Supabase Edge Functions</div>
+          <div style="font-size:12px;font-weight:700;margin-bottom:3px">Backend API</div>
+          <div style="font-size:10px;color:var(--mu);line-height:1.5">/ingest &middot; /generate-palace &middot; /npc-chat (SSE streaming). Deno runtime, free tier.</div>
+        </div>
+        <div style="background:var(--c1);padding:14px 16px;border-left:3px solid var(--am)">
+          <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px">Web Application</div>
+          <div style="font-size:12px;font-weight:700;margin-bottom:3px">3D Palace Renderer</div>
+          <div style="font-size:10px;color:var(--mu);line-height:1.5">Vite + TypeScript &middot; noa-engine / Babylon.js &middot; FPS controls &middot; NPC dialogue UI</div>
+        </div>
+      </div>
+
+      <div class="code" style="font-size:8.5px;line-height:1.8">
+        <span style="color:var(--mu)">// Concept graph &rarr; spatial layout</span><br>
+        <span class="kw">concepts</span>.<span class="st2">forEach</span>(c =&gt; {<br>
+        &nbsp;&nbsp;room.size = c.<span class="kw">importance</span> * SCALE<br>
+        &nbsp;&nbsp;room.pos &nbsp;= <span class="kw">forceDirected</span>(c.links)<br>
+        &nbsp;&nbsp;room.npc &nbsp;= <span class="kw">bindLLM</span>(c.source)<br>
+        })
+      </div>
+    </div>
+
+    <div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Technical specifications</div>
+      <table class="tbl">
+        <thead><tr><th>Spec</th><th>Target</th></tr></thead>
+        <tbody>
+          <tr><td>Map generation time</td><td style="color:var(--ac)">Under 60 seconds</td></tr>
+          <tr><td>Map load time</td><td style="color:var(--ac)">Under 10 seconds</td></tr>
+          <tr><td>Frame rate</td><td style="color:var(--ac)">30+ FPS (modern laptop)</td></tr>
+          <tr><td>NPC response latency</td><td style="color:var(--ac)">Streaming in &lt;2 seconds</td></tr>
+          <tr><td>Config size</td><td style="color:var(--ac)">10-50KB JSON</td></tr>
+          <tr><td>Max concepts</td><td style="color:var(--ac)">~50 per map</td></tr>
+          <tr><td>Browser support</td><td style="color:var(--ac)">Chrome / Firefox / Edge</td></tr>
+          <tr><td>Infra cost</td><td style="color:var(--ac)">$0 (free tiers)</td></tr>
+        </tbody>
+      </table>
+
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin:14px 0 8px">Tech Stack</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">TypeScript</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Vite</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">noa-engine</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Babylon.js</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Supabase</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Deno</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Claude API</span>
+        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Obsidian API</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 COMPARISON -->
+<section class="slide" id="s7">
+  <div class="sl"><span>07 / 10</span><div class="dot"></div><span>Comparison</span><div class="dot"></div><span class="acc">Why Loci Wins</span></div>
+  <h2>Existing tools don't build<br><span class="ac">spatial understanding.</span></h2>
+  <p class="tag">Study tools help you review. Loci helps you <em>remember</em> &mdash; by turning knowledge into space.</p>
+
+  <table class="tbl" style="margin-bottom:16px">
+    <thead><tr>
+      <th>Approach</th><th>Spatial Memory</th><th>3D / Immersive</th><th>AI-Powered</th><th>From Own Notes</th><th>Explorable</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>Anki / Flashcards</td><td class="no">&times;</td><td class="no">&times;</td><td class="my">~ Basic</td><td class="ok">&check;</td><td class="no">&times;</td></tr>
+      <tr><td>Obsidian Graph View</td><td class="my">~ 2D only</td><td class="no">&times;</td><td class="no">&times;</td><td class="ok">&check;</td><td class="my">~ Pan/zoom</td></tr>
+      <tr><td>Minecraft Education</td><td class="ok">&check;</td><td class="ok">&check;</td><td class="no">&times;</td><td class="no">&times; Manual</td><td class="ok">&check;</td></tr>
+      <tr><td>Mind Mapping Tools</td><td class="my">~ Flat</td><td class="no">&times;</td><td class="my">~ Some</td><td class="ok">&check;</td><td class="no">&times;</td></tr>
+      <tr class="hl"><td><strong>Loci</strong></td><td class="ok">&check; Full 3D</td><td class="ok">&check; Voxel</td><td class="ok">&check; LLM</td><td class="ok">&check; Obsidian</td><td class="ok">&check; FPS</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tc">
+    <div class="strip">
+      <span class="stag">KEY DIFFERENTIATOR &mdash;</span>Loci is the only tool that <strong style="color:var(--tx)">automatically generates 3D spatial environments from a student's own notes</strong>, combining the proven Method of Loci with AI and procedural generation.
+    </div>
+    <div style="display:flex;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+      <div style="flex:1;background:var(--c1);padding:12px;text-align:center"><div style="font-family:var(--m);font-size:18px;font-weight:600;color:var(--ac)">3x</div><div style="font-family:var(--m);font-size:7.5px;color:var(--mu);margin-top:2px">BETTER RETENTION</div></div>
+      <div style="flex:1;background:var(--c1);padding:12px;text-align:center"><div style="font-family:var(--m);font-size:18px;font-weight:600;color:var(--ac)">0</div><div style="font-family:var(--m);font-size:7.5px;color:var(--mu);margin-top:2px">MANUAL SETUP</div></div>
+      <div style="flex:1;background:var(--c1);padding:12px;text-align:center"><div style="font-family:var(--m);font-size:18px;font-weight:600;color:var(--ac)">&infin;</div><div style="font-family:var(--m);font-size:7.5px;color:var(--mu);margin-top:2px">REPLAYABLE</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 SCIENCE -->
+<section class="slide" id="s8">
+  <div class="sl"><span>08 / 10</span><div class="dot"></div><span>Science</span><div class="dot"></div><span class="acc">Why It Works</span></div>
+  <h2>Backed by neuroscience.<br><span class="ac">Not just gamification.</span></h2>
+  <p class="tag">The Method of Loci activates the hippocampus &mdash; the brain's spatial navigation and memory formation centre.</p>
+
+  <div class="bg2" style="margin-bottom:16px">
+    <div class="bench">
+      <div class="bname">Spatial Memory Advantage</div>
+      <div class="bsub">Dresler et al. 2017 &middot; Neuron</div>
+      <div class="bbig">+62%</div>
+      <div class="bbar" style="width:62%"></div>
+      <div class="bdesc">Participants trained with Method of Loci recalled 62% more words than control group after just 6 weeks of training.</div>
+    </div>
+    <div class="bench">
+      <div class="bname">Long-Term Retention</div>
+      <div class="bsub">Maguire et al. 2003 &middot; Nature Neuroscience</div>
+      <div class="bbig">4 mo+</div>
+      <div class="bbar" style="width:80%"></div>
+      <div class="bdesc">Memory champions using spatial techniques show superior recall even after 4+ months without review.</div>
+    </div>
+    <div class="bench">
+      <div class="bname">Hippocampal Activation</div>
+      <div class="bsub">O'Keefe &amp; Moser 2014 &middot; Nobel Prize</div>
+      <div class="bbig">3&times;</div>
+      <div class="bbar" style="width:75%"></div>
+      <div class="bdesc">Spatial navigation activates place cells and grid cells &mdash; the brain's native "GPS" for encoding location-based memory.</div>
+    </div>
+    <div class="bench">
+      <div class="bname">Multimodal Encoding</div>
+      <div class="bsub">Mayer 2009 &middot; Multimedia Learning Theory</div>
+      <div class="bbig">89%</div>
+      <div class="bbar" style="width:89%"></div>
+      <div class="bdesc">Combining visual, spatial, and verbal channels produces the strongest memory traces &mdash; exactly what Loci does.</div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <span class="stag">WHY LOCI WORKS &mdash;</span>Every mind palace activates <strong style="color:var(--tx)">three memory systems simultaneously</strong>: spatial (place cells), visual (3D artifacts &amp; themes), and semantic (NPC dialogue grounded in source notes). This triple encoding is why the Method of Loci outperforms every other study technique.
+  </div>
+</section>
+
+<!-- 09 DEMO -->
+<section class="slide" id="s9" style="align-items:center">
+  <div class="sl" style="justify-content:center"><span>09 / 10</span><div class="dot"></div><span>Demo</span><div class="dot"></div><span class="acc">See It Live</span></div>
+  <h2 style="text-align:center;margin-bottom:6px">From biology notes to<br><span class="ac">explorable world.</span></h2>
+  <p class="tag" style="text-align:center;margin:0 auto 22px;max-width:480px">Watch a set of Obsidian notes about cell biology transform into a walkable 3D mind palace in under 60 seconds.</p>
+
+  <div class="g3" style="max-width:820px;width:100%;margin-bottom:18px">
+    <div class="card" style="text-align:center">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Step 1</div>
+      <div class="big" style="font-size:28px">12</div>
+      <div class="ct">Obsidian notes selected</div>
+      <div class="cd">Cell biology: mitosis, DNA, organelles, membranes, proteins...</div>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Step 2</div>
+      <div class="big" style="font-size:28px;color:var(--ac2)">28</div>
+      <div class="ct">Concepts extracted</div>
+      <div class="cd">Knowledge graph with relationships, importance, clusters</div>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Step 3</div>
+      <div class="big" style="font-size:28px;color:var(--am)">1</div>
+      <div class="ct">Palace generated</div>
+      <div class="cd">Walkable world with NPC guides in every room</div>
+    </div>
+  </div>
+
+  <div style="max-width:820px;width:100%">
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+      <div style="background:var(--c1);padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;font-weight:700">The Nucleus Room</div>
+          <div style="font-size:10px;color:var(--mu);margin-top:2px">Largest room &mdash; central concept, 8 connections</div>
+        </div>
+        <span style="font-family:var(--m);font-size:9px;color:var(--ac)">importance: 0.95</span>
+      </div>
+      <div style="background:var(--c2);padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;font-weight:600">NPC: Professor Helix</div>
+          <div style="font-size:10px;color:var(--mu);margin-top:2px">"Welcome to the nucleus! Want to explore how DNA replication works?"</div>
+        </div>
+        <span style="font-family:var(--m);font-size:9px;color:var(--ac2)">LLM streaming</span>
+      </div>
+      <div style="background:var(--c1);padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;font-weight:600">3D Artifact: DNA Double Helix</div>
+          <div style="font-size:10px;color:var(--mu);margin-top:2px">AI-generated voxel model on illuminated pedestal</div>
+        </div>
+        <span style="font-family:var(--m);font-size:9px;color:var(--am)">text-to-3D</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="val" style="justify-content:center;margin-top:18px">
+    <div class="vl"></div>
+    LIVE DEMO AVAILABLE &middot; NATURE THEME &middot; CELL BIOLOGY NOTES
+  </div>
+</section>
+
+<!-- 10 CLOSE -->
+<section class="slide glow" id="s10">
+  <div class="sl"><span>10 / 10</span><div class="dot"></div><span>The Ask</span><div class="dot"></div><span class="acc">Why Loci</span></div>
+  <h2>Learning that you<br><span class="ac">physically walk through.</span></h2>
+  <p class="tag" style="margin-bottom:28px">The science is clear. The technology is ready. The experience is magical.</p>
+
+  <div class="g3" style="margin-bottom:16px">
+    <div class="card">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">The Science</div>
+      <div class="big" style="font-size:34px">+62%</div>
+      <div class="ct">recall with spatial memory</div>
+      <div class="cd">Method of Loci is the most effective memorisation technique known. Loci automates it.</div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">The Experience</div>
+      <div class="big" style="font-size:34px;color:var(--ac2)">6</div>
+      <div class="ct">themed immersive worlds</div>
+      <div class="cd">From nature gardens to space stations. Every subject becomes an adventure.</div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">The Technology</div>
+      <div class="big" style="font-size:34px;color:var(--am)">&lt;60s</div>
+      <div class="ct">from notes to palace</div>
+      <div class="cd">Obsidian plugin. AI extraction. Procedural generation. Zero cost infrastructure.</div>
+    </div>
+  </div>
+
+  <div style="border:1px solid rgba(0,212,170,.25);background:rgba(0,212,170,.06);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="lb" style="width:36px;height:36px;font-size:13px;border-radius:6px">L</div>
+      <div>
+        <div style="font-size:18px;font-weight:800;letter-spacing:-.01em">Loci</div>
+        <div style="font-family:var(--m);font-size:8px;color:var(--mu);margin-top:2px">Mind Palace Generator &middot; CSIRO Hackathon 2026</div>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:16px;font-weight:800;color:var(--ac);margin-bottom:3px">Transform how students remember.</div>
+      <div style="font-size:10.5px;color:var(--mu);line-height:1.6">Every student has notes. Few remember them.<br>Loci turns knowledge into worlds you can walk through.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-top:20px;max-width:600px">
+    <div style="flex:1;background:var(--c1);padding:14px;text-align:center">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Consumers &rarr; Creators</div>
+      <div style="font-size:10px;color:var(--mu)">Students build their own worlds</div>
+    </div>
+    <div style="flex:1;background:var(--c1);padding:14px;text-align:center">
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Passive &rarr; Spatial</div>
+      <div style="font-size:10px;color:var(--mu)">Walking replaces re-reading</div>
+    </div>
+    <div style="flex:1;background:var(--c1);padding:14px;text-align:center">
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Abstract &rarr; Tangible</div>
+      <div style="font-size:10px;color:var(--mu)">Concepts become 3D artifacts</div>
+    </div>
+  </div>
+</section>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const dotsEl=document.getElementById('dots');
+const numEl=document.getElementById('num');
+slides.forEach((_,i)=>{
+  const d=document.createElement('button');
+  d.className='nd'+(i===0?' on':'');
+  d.title=`${i+1}`;
+  d.onclick=()=>slides[i].scrollIntoView({behavior:'smooth'});
+  dotsEl.appendChild(d);
+});
+const dots=document.querySelectorAll('.nd');
+const io=new IntersectionObserver(e=>{
+  e.forEach(en=>{
+    if(!en.isIntersecting)return;
+    en.target.classList.add('in');
+    const i=Array.from(slides).indexOf(en.target);
+    dots.forEach((d,j)=>d.classList.toggle('on',j===i));
+    numEl.textContent=String(i+1).padStart(2,'0');
+  });
+},{threshold:0.3});
+slides.forEach(s=>io.observe(s));
+document.addEventListener('keydown',e=>{
+  const i=Array.from(dots).findIndex(d=>d.classList.contains('on'));
+  if((e.key==='ArrowDown'||e.key==='ArrowRight')&&i<slides.length-1)slides[i+1].scrollIntoView({behavior:'smooth'});
+  if((e.key==='ArrowUp'||e.key==='ArrowLeft')&&i>0)slides[i-1].scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
