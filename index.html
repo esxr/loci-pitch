@@ -180,7 +180,7 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
   </div>
 </nav>
 
-<!-- 01 TITLE — Emotional Hook -->
+<!-- 01 TITLE — Mind Palace Generator -->
 <section class="slide glow" id="s1" style="align-items:center;text-align:center;gap:0">
   <div class="pill"><div class="pd"></div>CSIRO Challenge 2026</div>
 
@@ -188,12 +188,12 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
     <span class="ac">Loci</span>
   </h1>
 
-  <div style="font-size:clamp(16px,2.2vw,26px);font-weight:500;color:var(--t2);letter-spacing:-.01em;margin-bottom:20px">
-    Where students <span style="color:var(--ac)">build worlds to remember</span>
+  <div style="font-size:clamp(16px,2.2vw,26px);font-weight:500;color:var(--t2);letter-spacing:-.01em;margin-bottom:6px">
+    Mind Palace Generator
   </div>
 
-  <div style="font-size:14px;color:var(--mu);max-width:560px;line-height:1.6;margin-bottom:0">
-    Imagine a student selects their Obsidian notes on cell biology and watches a Minecraft-style world grow around the concepts &mdash; organelles forming rooms, pathways connecting processes, NPCs ready to quiz them on every detail.
+  <div style="font-size:clamp(14px,1.8vw,20px);font-weight:400;color:var(--mu);letter-spacing:-.01em;margin-bottom:20px">
+    Turn your notes into <span style="color:var(--ac)">walkable 3D worlds</span>
   </div>
 
   <div style="position:relative;border:1px solid var(--b1);overflow:hidden;margin-top:20px;max-width:700px">
@@ -216,62 +216,324 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
   </div>
 </section>
 
-<!-- 02 THE PROBLEM — The study retention crisis -->
+<!-- 02 THE LLM WIKI ERA — Karpathy's Vision -->
 <section class="slide" id="s2">
-  <div class="sl"><span>02 / 11</span><div class="dot"></div><span>Problem</span><div class="dot"></div><span class="acc">The Retention Crisis</span></div>
-  <h2>They master every game world<br>but can't remember what they studied last week.<br><span class="ac">What if studying felt like exploring?</span></h2>
-  <p class="tag">Students spend hours building detailed worlds in games &mdash; memorising every location, every path, every detail. Yet their study notes vanish from memory within days. The tools we give them are flat, passive, and forgettable.</p>
+  <div class="sl"><span>02 / 11</span><div class="dot"></div><span>Trend</span><div class="dot"></div><span class="acc">Karpathy's Vision</span></div>
+  <h2>The future of knowledge<br><span class="ac">is personal.</span></h2>
+  <p class="tag">Students are building highly specialized, interlinked personal knowledge bases with tools like Obsidian, Notion, and Roam. LLMs are making these wikis come alive &mdash; but reading them is still passive. What if your wiki wasn't just searchable &mdash; but walkable?</p>
 
   <div class="tc">
     <div>
-      <!-- Student learning image -->
-      <div style="position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px;margin-bottom:14px">
-        <img src="img/student.jpg" style="width:100%;display:block;opacity:.5;height:140px;object-fit:cover">
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.85) 100%)"></div>
-        <div style="position:absolute;bottom:10px;left:12px;font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.08em;text-transform:uppercase">
-          PASSIVE LEARNING — RE-READING NOTES
+      <!-- Karpathy quote callout -->
+      <div style="border-left:3px solid var(--ac);background:rgba(0,212,170,.04);padding:18px 22px;margin-bottom:18px">
+        <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Andrej Karpathy</div>
+        <div style="font-size:14px;font-weight:500;color:var(--tx);line-height:1.7;font-style:italic">
+          "Everyone will have a personal AI-powered wiki &mdash; a living, breathing knowledge base that grows with you, understands context, and surfaces connections you'd never find alone."
         </div>
-        <div style="position:absolute;top:8px;right:10px;background:rgba(224,90,78,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">
-          Low retention
-        </div>
+        <div style="font-family:var(--m);font-size:8px;color:var(--mu);margin-top:10px">The LLM-powered personal wiki is the next evolution of how we organize knowledge</div>
       </div>
 
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">How students study today</div>
-      <div class="br"><span class="bl">Re-reading notes</span><div class="bt"><div class="bf" style="width:15%;background:var(--rd)"></div></div><span class="bv" style="color:var(--rd)">Passive</span></div>
-      <div class="br"><span class="bl">Flashcards / Anki</span><div class="bt"><div class="bf" style="width:35%;background:var(--am)"></div></div><span class="bv" style="color:var(--am)">Rote</span></div>
-      <div class="br"><span class="bl">Lecture recordings</span><div class="bt"><div class="bf" style="width:25%;background:var(--rd)"></div></div><span class="bv" style="color:var(--rd)">Watch only</span></div>
-      <div class="br"><span class="bl" style="color:var(--ac)">Walking 3D mind palaces</span><div class="bt"><div class="bf" style="width:90%;background:var(--ac)"></div></div><span class="bv">Spatial</span></div>
-
-      <div class="strip" style="margin-top:16px">
-        <span class="stag">THE INSIGHT &mdash;</span>Students can navigate every corner of a game world from memory &mdash; but forget their own notes within days. What if that same spatial encoding could anchor cell biology, organic chemistry, or world history?
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">The rise of personal knowledge</div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+        <div class="card">
+          <div class="ct">Obsidian, Notion, Roam Research</div>
+          <div class="cd">Students are building interconnected knowledge graphs with wikilinks, tags, and backlinks &mdash; creating personal wikis that mirror how their brain connects ideas</div>
+        </div>
+        <div class="card">
+          <div class="ct">LLMs make wikis intelligent</div>
+          <div class="cd">AI can now query, summarize, and surface connections across thousands of notes &mdash; but the interface is still text on a screen</div>
+        </div>
+        <div class="card">
+          <div class="ct" style="color:var(--ac)">The missing dimension: space</div>
+          <div class="cd">You can search your wiki. You can chat with your wiki. But you can't <strong style="color:var(--tx)">walk through</strong> your wiki &mdash; until now.</div>
+        </div>
       </div>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
-      <div class="card">
-        <div style="font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Missed Opportunity</div>
-        <div class="big" style="font-size:28px">Spatial</div>
-        <div class="ct">memory is the brain's most powerful encoding</div>
-        <div class="cd">Students remember the layout of every game map they've played &mdash; but can't recall a lecture from two days ago</div>
+    <div>
+      <div style="position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px;margin-bottom:14px">
+        <img src="img/student.jpg" style="width:100%;display:block;opacity:.5;height:180px;object-fit:cover">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.85) 100%)"></div>
+        <div style="position:absolute;bottom:10px;left:12px;font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.08em;text-transform:uppercase">
+          PERSONAL KNOWLEDGE BASES ARE EXPLODING
+        </div>
       </div>
-      <div class="card">
-        <div class="big">2,500+</div>
-        <div class="ct">years of proven use</div>
-        <div class="cd">The Method of Loci &mdash; placing ideas in imagined spaces &mdash; is the oldest and most effective memory technique known to humanity</div>
+
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+        <div class="card">
+          <div class="big" style="font-size:28px">Millions</div>
+          <div class="ct">of knowledge workers use Obsidian</div>
+          <div class="cd">A new generation is building second brains &mdash; interlinked markdown files that form personal encyclopedias</div>
+        </div>
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--ac2)">LLMs</div>
+          <div class="ct">turn static notes into living knowledge</div>
+          <div class="cd">But even with AI, the experience is still reading &mdash; scrolling through text, clicking links, staring at screens</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="big" style="color:var(--rd)">But...</div>
-        <div class="ct">building a mind palace is hard</div>
-        <div class="cd">The technique requires imagining complex spatial environments and placing concepts within them &mdash; a skill most students never develop. So what if AI built the palace from their own notes?</div>
+
+      <div class="strip" style="margin-top:14px">
+        <span class="stag">THE QUESTION &mdash;</span>Your notes are already a knowledge graph. Your brain already has a built-in GPS. <strong style="color:var(--tx)">What if your wiki wasn't just searchable &mdash; but walkable?</strong>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 03 OUR ANSWER -->
+<!-- 03 VISUAL LEARNERS + METHOD OF LOCI — Personal Anecdote -->
 <section class="slide" id="s3">
-  <div class="sl"><span>03 / 11</span><div class="dot"></div><span>Solution</span><div class="dot"></div><span class="acc">Meet Loci</span></div>
-  <h2>Type a topic. Pick a world.<br><span class="ac">Walk through your knowledge.</span></h2>
+  <div class="sl"><span>03 / 11</span><div class="dot"></div><span>Insight</span><div class="dot"></div><span class="acc">Method of Loci</span></div>
+  <h2>I scored 96% in chemistry.<br><span class="ac">It was my weakest subject.</span></h2>
+  <p class="tag">I didn't get smarter. I got spatial. The Method of Loci turned my worst subject into my best result &mdash; and that experience is why Loci exists.</p>
+
+  <div class="tc">
+    <div>
+      <!-- Personal anecdote callout -->
+      <div style="border-left:3px solid var(--ac2);background:rgba(139,92,246,.04);padding:18px 22px;margin-bottom:18px">
+        <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Founder's Story</div>
+        <div style="font-size:13px;color:var(--tx);line-height:1.7">
+          In high school, chemistry was my worst subject. I was failing. Then I discovered the Method of Loci &mdash; I placed every reaction, every formula, every concept in rooms of a mental palace. I walked through it before every exam. I scored <strong style="color:var(--ac)">96%</strong>. The knowledge didn't change. The <em>encoding</em> changed.
+        </div>
+      </div>
+
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Retention by study method</div>
+      <div class="br"><span class="bl">Re-reading notes</span><div class="bt"><div class="bf" style="width:15%;background:var(--rd)"></div></div><span class="bv" style="color:var(--rd)">10-20%</span></div>
+      <div class="br"><span class="bl">Flashcards / Anki</span><div class="bt"><div class="bf" style="width:35%;background:var(--am)"></div></div><span class="bv" style="color:var(--am)">30-40%</span></div>
+      <div class="br"><span class="bl">Lecture recordings</span><div class="bt"><div class="bf" style="width:20%;background:var(--rd)"></div></div><span class="bv" style="color:var(--rd)">15-25%</span></div>
+      <div class="br"><span class="bl" style="color:var(--ac)">Method of Loci</span><div class="bt"><div class="bf" style="width:90%;background:var(--ac)"></div></div><span class="bv">~90%</span></div>
+
+      <div class="strip" style="margin-top:16px">
+        <span class="stag">THE SCIENCE &mdash;</span>Visual learners represent <strong style="color:var(--tx)">65% of the population</strong> (Fleming's VARK model). The Method of Loci has been used for 2,500+ years &mdash; from Greek orators to modern memory champions. Spatial memory is dramatically more powerful than rote memorization.
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+      <div class="card">
+        <div style="font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Technique</div>
+        <div class="big" style="font-size:28px">2,500+</div>
+        <div class="ct">years of proven use</div>
+        <div class="cd">The Method of Loci &mdash; placing ideas in imagined spaces &mdash; is the oldest and most effective memory technique known to humanity. Greek orators used it. Memory champions still do.</div>
+      </div>
+      <div class="card">
+        <div class="big" style="font-size:28px;color:var(--ac2)">65%</div>
+        <div class="ct">of people are visual learners</div>
+        <div class="cd">Fleming's VARK model shows the majority of students learn best through spatial and visual encoding &mdash; not text. Yet almost every study tool is text-based.</div>
+        <div class="cs">SOURCE: FLEMING &amp; MILLS, 1992</div>
+      </div>
+      <div class="card">
+        <div class="big" style="font-size:28px;color:var(--am)">~90%</div>
+        <div class="ct">retention with spatial encoding</div>
+        <div class="cd">Participants trained in Method of Loci showed dramatically higher recall than control groups &mdash; the technique works because it maps to how the brain naturally encodes memory.</div>
+        <div class="cs">SOURCE: DRESLER ET AL. 2017, NEURON</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 OBSIDIAN & MEMORY-INTENSIVE FIELDS -->
+<section class="slide glow" id="s4">
+  <div class="sl"><span>04 / 11</span><div class="dot"></div><span>Problem</span><div class="dot"></div><span class="acc">The Knowledge Gap</span></div>
+  <h2>Medical students take 10,000 pages of notes.<br><span class="ac">They remember a fraction.</span></h2>
+  <p class="tag">Obsidian has exploded in memory-intensive fields &mdash; medicine, law, STEM. Students build beautiful interlinked knowledge graphs. But the graph is 2D, flat, and passive. You READ it. You don't EXPERIENCE it.</p>
+
+  <div class="tc">
+    <div>
+      <div style="position:relative;border:1px solid var(--b1);overflow:hidden;margin-bottom:18px;border-radius:4px">
+        <img src="img/obsidian_graph.png" style="width:100%;height:220px;object-fit:cover;display:block;opacity:.55;filter:brightness(.7)">
+        <div style="position:absolute;bottom:8px;left:8px;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">
+          OBSIDIAN GRAPH VIEW &mdash; BEAUTIFUL BUT FLAT
+        </div>
+        <div style="position:absolute;top:8px;right:10px;background:rgba(224,90,78,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">
+          2D only
+        </div>
+      </div>
+
+      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Why Obsidian is everywhere</div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+        <div class="card">
+          <div class="ct">Interlinked markdown notes</div>
+          <div class="cd">Wikilinks, backlinks, and tags create a knowledge graph naturally &mdash; every note connected to related concepts</div>
+        </div>
+        <div class="card">
+          <div class="ct">Massive in medical &amp; STEM education</div>
+          <div class="cd">Medical students use Obsidian to organize anatomy, pharmacology, pathology &mdash; thousands of interconnected notes per course</div>
+        </div>
+        <div class="card">
+          <div class="ct" style="color:var(--rd)">But the graph is passive</div>
+          <div class="cd">You stare at dots and lines. You click through links. The knowledge graph is a map &mdash; but you can't walk through it.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Scale</div>
+          <div class="big" style="font-size:28px">Millions</div>
+          <div class="ct">of Obsidian users worldwide</div>
+          <div class="cd">Especially popular in medical schools, law schools, and STEM programs &mdash; anywhere that demands massive knowledge retention</div>
+        </div>
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--ac2)">10,000+</div>
+          <div class="ct">pages of notes per medical student</div>
+          <div class="cd">Four years of dense, interconnected knowledge &mdash; pharmacology, anatomy, pathology, clinical reasoning &mdash; all in markdown</div>
+        </div>
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--rd)">Fraction</div>
+          <div class="ct">retained through passive review</div>
+          <div class="cd">Re-reading notes has 10-20% retention. Students build incredible knowledge bases &mdash; then forget most of what's in them.</div>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span class="stag">THE GAP &mdash;</span>Obsidian creates the knowledge graph. LLMs make it intelligent. But <strong style="color:var(--tx)">the interface is still flat text on a screen.</strong> The brain doesn't want to read a graph &mdash; it wants to walk through one.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 THE REPETITION TRAP -->
+<section class="slide" id="s5">
+  <div class="sl"><span>05 / 11</span><div class="dot"></div><span>Science</span><div class="dot"></div><span class="acc">The Repetition Trap</span></div>
+  <h2>10,000 repetitions of reading.<br><span class="ac">Or 10 walks through a map.</span></h2>
+  <p class="tag">Our brains evolved for spatial navigation, not text processing. Our ancestors needed mental maps to survive &mdash; finding food, water, shelter, avoiding predators. Your hippocampus doesn't care about flashcards. It cares about WHERE things are.</p>
+
+  <div class="tc">
+    <div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--mu);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">Evolutionary Advantage</div>
+          <div class="ct">The brain has a built-in GPS</div>
+          <div class="cd">Our ancestors needed mental maps to survive &mdash; finding food sources, water, shelter, and avoiding predators. This is why spatial memory is the most powerful encoding system the brain has.</div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--ac);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">Nobel Prize 2014</div>
+          <div class="big" style="font-size:28px;color:var(--ac2)">Nobel</div>
+          <div class="ct">Place cells + Grid cells</div>
+          <div class="cd">O'Keefe &amp; Moser won the 2014 Nobel Prize in Medicine for discovering the brain's inner GPS &mdash; place cells and grid cells that encode location as memory. Your hippocampus is literally a spatial computer.</div>
+          <div class="cs">O'KEEFE &amp; MOSER, NOBEL PRIZE IN PHYSIOLOGY OR MEDICINE, 2014</div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--am);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Counter-Strike Effect</div>
+          <div class="ct">Gamers remember every corner of every map</div>
+          <div class="cd">A gamer can navigate every corner of Dust 2 after a few hours of play &mdash; but can't recall what they studied for weeks. Same brain. Different encoding. That's the power of spatial memory.</div>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span class="stag">THE INSIGHT &mdash;</span>Your hippocampus doesn't care about flashcards. It cares about <strong style="color:var(--tx)">WHERE things are.</strong> Gamers remember every corner of every Counter-Strike map after a few hours &mdash; but can't recall what they studied for weeks. Same brain. Different encoding.
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:14px">
+        <div style="flex:1;position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px">
+          <img src="img/brain.jpg" style="width:100%;height:100%;display:block;opacity:.5;object-fit:cover;min-height:180px">
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.85) 100%)"></div>
+          <div style="position:absolute;top:6px;left:8px;background:rgba(139,92,246,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">Hippocampus</div>
+          <div style="position:absolute;bottom:8px;left:8px;right:8px">
+            <div style="font-family:var(--m);font-size:7px;color:var(--t2);letter-spacing:.06em;line-height:1.5">Place cells + Grid cells = spatial memory encoding</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;border:1px solid var(--b1);overflow:hidden;max-width:820px;width:100%;margin-bottom:14px">
+        <img src="img/knowledge_graph.jpg" style="width:100%;height:160px;object-fit:cover;display:block;opacity:.5">
+        <div style="position:absolute;top:10px;left:12px;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">TRIPLE ENCODING &mdash; SPATIAL + VISUAL + SEMANTIC</div>
+        <div style="position:absolute;bottom:8px;right:10px;font-family:var(--m);font-size:7px;color:var(--mu)">KNOWLEDGE GRAPH TO 3D SPATIAL MEMORY</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--rd)">10-20%</div>
+          <div class="ct">retention from re-reading</div>
+          <div class="cd">The most common study method is also the least effective. Students re-read notes endlessly &mdash; and forget almost everything.</div>
+        </div>
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--ac)">~90%</div>
+          <div class="ct">retention from spatial encoding</div>
+          <div class="cd">The Method of Loci activates the hippocampus &mdash; the brain's spatial navigation and memory formation centre. The same system that remembers game maps can remember cell biology.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE MAP PROBLEM -->
+<section class="slide" id="s6">
+  <div class="sl"><span>06 / 11</span><div class="dot"></div><span>Gap</span><div class="dot"></div><span class="acc">The Map Problem</span></div>
+  <h2>The problem isn't the method.<br><span class="ac">It's the maps.</span></h2>
+  <p class="tag">Method of Loci works brilliantly &mdash; but you need a spatial environment to walk through. Memory champions spend YEARS building mental palaces room by room. What if AI could generate an infinite number of unique maps &mdash; one for every set of notes?</p>
+
+  <div class="tc">
+    <div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--rd);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Bottleneck</div>
+          <div class="ct">You need a spatial environment to walk through</div>
+          <div class="cd">The Method of Loci requires a vivid mental palace &mdash; a building, a route, a world with distinct locations. Most students don't have one. Most never will.</div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--am);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Founder's Hack</div>
+          <div class="ct">I used Counter-Strike maps</div>
+          <div class="cd">I knew every corner of Dust 2, Inferno, Mirage. So I placed chemistry concepts in those maps. It worked brilliantly &mdash; but there are only ~10 maps I know well enough to use.</div>
+        </div>
+        <div class="card">
+          <div style="font-family:var(--m);font-size:7.5px;color:var(--ac2);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase">The Champions' Problem</div>
+          <div class="ct">Memory champions spend YEARS building palaces</div>
+          <div class="cd">World memory champions construct elaborate mental architectures room by room, space by space. It takes years of practice. The technique is ancient and proven &mdash; but the tooling doesn't exist.</div>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span class="stag">THE GAP &mdash;</span>The science is proven. The technique is 2,500 years old. But <strong style="color:var(--tx)">building a mind palace is the hardest part.</strong> What if AI could generate an infinite number of unique maps &mdash; one for every set of notes you have?
+      </div>
+    </div>
+
+    <div>
+      <!-- Visual: CS map → limited vs AI → infinite -->
+      <div style="display:flex;gap:8px;align-items:stretch;margin-bottom:14px">
+        <div style="flex:1;position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px">
+          <img src="img/gaming.jpg" style="width:100%;height:100%;display:block;opacity:.45;object-fit:cover;min-height:120px">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.6) 0%,rgba(10,10,10,.3) 100%)"></div>
+          <div style="position:absolute;top:6px;left:8px;background:rgba(224,90,78,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">~10 maps you know</div>
+          <div style="position:absolute;bottom:6px;left:8px;font-family:var(--m);font-size:7px;color:var(--t2);letter-spacing:.06em">Counter-Strike &middot; Limited &middot; Shared</div>
+        </div>
+        <div style="display:flex;align-items:center;font-family:var(--m);font-size:16px;color:var(--ac);flex-shrink:0;padding:0 4px">&rarr;</div>
+        <div style="flex:1;position:relative;border:1px solid rgba(0,212,170,.3);overflow:hidden;border-radius:4px">
+          <img src="img/voxel_city.jpg" style="width:100%;height:100%;display:block;opacity:.5;object-fit:cover;min-height:120px">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.5) 0%,rgba(10,10,10,.2) 100%)"></div>
+          <div style="position:absolute;top:6px;left:8px;background:rgba(0,212,170,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">Infinite AI-generated maps</div>
+          <div style="position:absolute;bottom:6px;left:8px;font-family:var(--m);font-size:7px;color:var(--t2);letter-spacing:.06em">Loci &middot; Unique &middot; Personal</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--rd)">~10</div>
+          <div class="ct">maps a gamer knows well enough</div>
+          <div class="cd">You can only use the Method of Loci in spaces you know intimately. Most people know a handful of buildings and game maps. That's it.</div>
+        </div>
+        <div class="card">
+          <div class="big" style="font-size:28px;color:var(--ac)">&infin;</div>
+          <div class="ct">maps AI can generate</div>
+          <div class="cd">Every set of notes gets its own unique, procedurally generated world &mdash; tailored to the knowledge graph, themed to your preference, ready in under 60 seconds.</div>
+        </div>
+      </div>
+
+      <div style="border-left:3px solid var(--ac);background:rgba(0,212,170,.04);padding:14px 18px">
+        <div style="font-size:13px;color:var(--tx);line-height:1.7;font-style:italic">
+          "What if AI could generate an infinite number of unique maps &mdash; one for every set of notes you'll ever take?"
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 THE SOLUTION: LOCI -->
+<section class="slide" id="s7">
+  <div class="sl"><span>07 / 11</span><div class="dot"></div><span>Solution</span><div class="dot"></div><span class="acc">Meet Loci</span></div>
+  <h2>Select your notes. Pick a world.<br><span class="ac">Walk through your knowledge.</span></h2>
+  <p class="tag">An Obsidian plugin that transforms your notes into explorable 3D mind palaces. Related concepts in adjacent rooms. Important concepts get bigger spaces. NPC guides powered by LLMs. AI-generated 3D artifacts for every concept.</p>
 
   <div style="border:1px solid rgba(0,212,170,.25);background:rgba(0,212,170,.04);padding:22px 26px;margin-bottom:20px;max-width:800px">
     <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">CSIRO Challenge Statement</div>
@@ -280,153 +542,70 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
     </div>
   </div>
 
-  <div style="position:relative;border:1px solid var(--b1);overflow:hidden;margin-top:14px;margin-bottom:20px;max-width:800px">
-    <img src="img/obsidian_graph.png" style="width:100%;height:200px;object-fit:cover;display:block;opacity:.55;filter:brightness(.7)">
-    <div style="position:absolute;bottom:8px;left:8px;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">
-      KNOWLEDGE GRAPH EXTRACTION
+  <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">The 4-step pipeline</div>
+  <div style="display:flex;flex-direction:column;gap:0;margin-bottom:20px;max-width:800px">
+    <div class="flow-step">
+      <div class="flow-num">01</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px">Select your notes</div>
+        <div style="font-size:10px;color:var(--mu)">Choose Obsidian notes on any topic &mdash; cell biology, organic chemistry, world history &mdash; or type a topic directly</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">
+      <div class="flow-num">02</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px">AI extracts knowledge graph</div>
+        <div style="font-size:10px;color:var(--mu)">LLM parses your notes into concepts, relationships, and hierarchy &mdash; building the blueprint for your palace</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step">
+      <div class="flow-num">03</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px">Procedural 3D world generates</div>
+        <div style="font-size:10px;color:var(--mu)">Related concepts become adjacent rooms. Important concepts get bigger spaces. AI generates 3D artifacts and NPC guides.</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&darr;</div>
+    <div class="flow-step" style="border-color:rgba(0,212,170,.3)">
+      <div class="flow-num" style="color:var(--ac)">04</div>
+      <div>
+        <div style="font-size:12px;font-weight:700;margin-bottom:2px;color:var(--ac)">Explore your mind palace</div>
+        <div style="font-size:10px;color:var(--mu)">Walk through with WASD controls. Discover artifacts. Talk to NPC guides grounded in your source notes. Remember forever.</div>
+      </div>
     </div>
   </div>
 
   <div class="g4">
     <div class="card" style="border-top:2px solid var(--ac)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Your Notes, Your World</div>
-      <div class="ct">Every student's world is unique</div>
-      <div class="cd">Select your Obsidian notes on cell biology, organic chemistry, or world history, pick a theme, and watch a personalised 3D world come to life &mdash; no two are the same</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Obsidian Plugin</div>
+      <div class="ct">Your notes, your world</div>
+      <div class="cd">Select notes in Obsidian, click "Open in Palace" &mdash; your knowledge graph becomes a walkable 3D environment in under 60 seconds</div>
     </div>
     <div class="card" style="border-top:2px solid var(--ac2)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">AI as Tutor, Not Answer Key</div>
-      <div class="ct">NPC guides quiz and challenge you</div>
-      <div class="cd">AI characters don't just give answers &mdash; they ask "what's the difference between mitosis and meiosis?" and push deeper understanding</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">NPC Guides</div>
+      <div class="ct">LLM-powered tutors in every room</div>
+      <div class="cd">AI characters grounded in your source notes &mdash; they explain, quiz, and push deeper understanding at every turn</div>
     </div>
     <div class="card" style="border-top:2px solid var(--am)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Create &rarr; Explore &rarr; Learn</div>
-      <div class="ct">Exploration is the revision process</div>
-      <div class="cd">Students don't re-read notes &mdash; they walk through rooms, discover 3D artifacts, and discuss concepts with AI tutors grounded in their own material</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">3D Artifacts</div>
+      <div class="ct">AI-generated concept objects</div>
+      <div class="cd">A spinning DNA helix, a rotating benzene ring, a 3D cell membrane &mdash; abstract ideas made visible and tangible</div>
     </div>
     <div class="card" style="border-top:2px solid var(--tx)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--tx);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Obsidian-Native</div>
-      <div class="ct">One click from your notes to a 3D world</div>
-      <div class="cd">Select notes in Obsidian, click "Open in Palace," and your study material becomes a walkable 3D environment in seconds.</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--tx);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Spatial Layout</div>
+      <div class="ct">Knowledge graph becomes architecture</div>
+      <div class="cd">Related concepts in adjacent rooms. Important concepts get bigger spaces. The world mirrors how your knowledge connects.</div>
     </div>
   </div>
 </section>
 
-<!-- 04 A STUDENT'S JOURNEY -->
-<section class="slide glow" id="s4">
-  <div class="sl"><span>04 / 11</span><div class="dot"></div><span>Journey</span><div class="dot"></div><span class="acc">A Student's Experience</span></div>
-  <h2>Five minutes with Loci.<br><span class="ac">A lifetime of understanding.</span></h2>
-  <p class="tag">Here is what it feels like to be a Year 10 student or university learner using Loci for the first time.</p>
-
-  <div class="tc">
-    <div>
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">The student's journey</div>
-
-      <div style="display:flex;flex-direction:column;gap:0">
-        <div class="flow-step">
-          <div class="flow-num">01</div>
-          <div>
-            <div style="font-size:12px;font-weight:700;margin-bottom:2px">Select your notes</div>
-            <div style="font-size:10px;color:var(--mu)">Choose Obsidian notes on cell biology, organic chemistry, or world history &mdash; or type any topic directly</div>
-          </div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">
-          <div class="flow-num">02</div>
-          <div>
-            <div style="font-size:12px;font-weight:700;margin-bottom:2px">Pick a world theme</div>
-            <div style="font-size:10px;color:var(--mu)">Nature garden? Lava caves? Space station? Choose the aesthetic that suits your study vibe</div>
-          </div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">
-          <div class="flow-num">03</div>
-          <div>
-            <div style="font-size:12px;font-weight:700;margin-bottom:2px">Watch the world build itself</div>
-            <div style="font-size:10px;color:var(--mu)">AI extracts a knowledge graph from your notes and generates a unique Minecraft-style world in under 60 seconds</div>
-          </div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">
-          <div class="flow-num">04</div>
-          <div>
-            <div style="font-size:12px;font-weight:700;margin-bottom:2px">Explore rooms, discover artifacts</div>
-            <div style="font-size:10px;color:var(--mu)">Walk through with WASD controls &mdash; each room holds a concept, each artifact tells a story</div>
-          </div>
-        </div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step" style="border-color:rgba(0,212,170,.3)">
-          <div class="flow-num" style="color:var(--ac)">05</div>
-          <div>
-            <div style="font-size:12px;font-weight:700;margin-bottom:2px;color:var(--ac)">Talk to the guides, remember forever</div>
-            <div style="font-size:10px;color:var(--mu)">Friendly AI characters explain concepts, ask questions, and spark curiosity at every turn</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Why the world mirrors understanding</div>
-      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
-        <div class="card" style="display:flex;align-items:center;gap:14px">
-          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--ac);width:32px;flex-shrink:0;text-align:center">&harr;</div>
-          <div>
-            <div class="ct">Nearby rooms = related ideas</div>
-            <div class="cd">"Mitochondria" is next door to "ATP Synthesis" &mdash; connected concepts are always neighbours</div>
-          </div>
-        </div>
-        <div class="card" style="display:flex;align-items:center;gap:14px">
-          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--ac2);width:32px;flex-shrink:0;text-align:center">&square;</div>
-          <div>
-            <div class="ct">Big rooms = big ideas</div>
-            <div class="cd">The most important concepts get the grandest spaces &mdash; you intuitively feel their significance</div>
-          </div>
-        </div>
-        <div class="card" style="display:flex;align-items:center;gap:14px">
-          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--am);width:32px;flex-shrink:0;text-align:center">&cir;</div>
-          <div>
-            <div class="ct">Zones = topic clusters</div>
-            <div class="cd">The "cell membrane zone" naturally groups transport, receptors, and signalling &mdash; mirroring how the knowledge graph connects</div>
-          </div>
-        </div>
-        <div class="card" style="display:flex;align-items:center;gap:14px">
-          <div style="font-family:var(--m);font-size:20px;font-weight:700;color:var(--tx);width:32px;flex-shrink:0;text-align:center">&diam;</div>
-          <div>
-            <div class="ct">Artifacts = touchable concepts</div>
-            <div class="cd">A spinning DNA helix, a rotating benzene ring, a 3D cell membrane &mdash; abstract ideas made visible and real</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="strip">
-        <span class="stag">THE MAGIC &mdash;</span>A student doesn't re-read their biology notes. <strong style="color:var(--tx)">They walk through them.</strong> They visit the Nucleus Room, talk to Professor Helix, and find the DNA Artifact. That's a memory that sticks.
-      </div>
-
-      <!-- Visual mockup: topic → 3D world transformation -->
-      <div style="margin-top:14px;display:flex;gap:8px;align-items:stretch">
-        <div style="flex:1;position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px">
-          <img src="img/study_notes.jpg" style="width:100%;height:100%;display:block;opacity:.45;object-fit:cover;min-height:100px">
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.6) 0%,rgba(10,10,10,.3) 100%)"></div>
-          <div style="position:absolute;top:6px;left:8px;background:rgba(0,212,170,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">Input: Obsidian Notes</div>
-          <div style="position:absolute;bottom:6px;left:8px;font-family:var(--m);font-size:7px;color:var(--t2);letter-spacing:.06em">Markdown &middot; Wikilinks &middot; Knowledge Graph</div>
-        </div>
-        <div style="display:flex;align-items:center;font-family:var(--m);font-size:16px;color:var(--ac);flex-shrink:0;padding:0 4px">&rarr;</div>
-        <div style="flex:1;position:relative;border:1px solid rgba(0,212,170,.3);overflow:hidden;border-radius:4px">
-          <img src="img/minecraft_world.jpg" style="width:100%;height:100%;display:block;opacity:.5;object-fit:cover;min-height:100px">
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.5) 0%,rgba(10,10,10,.2) 100%)"></div>
-          <div style="position:absolute;top:6px;left:8px;background:rgba(139,92,246,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">Output: 3D World</div>
-          <div style="position:absolute;bottom:6px;left:8px;font-family:var(--m);font-size:7px;color:var(--t2);letter-spacing:.06em">Voxel &middot; Walkable &middot; Alive</div>
-          <div style="position:absolute;top:6px;right:8px;background:rgba(212,137,26,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">&lt;60s</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 05 EXPERIENCE -->
-<section class="slide" id="s5">
-  <div class="sl"><span>05 / 11</span><div class="dot"></div><span>Experience</span><div class="dot"></div><span class="acc">Themed Worlds</span></div>
+<!-- 08 THEMED WORLDS -->
+<section class="slide" id="s8">
+  <div class="sl"><span>08 / 11</span><div class="dot"></div><span>Experience</span><div class="dot"></div><span class="acc">Themed Worlds</span></div>
   <h2>Six immersive themes.<br><span class="ac">Same knowledge, different worlds.</span></h2>
-  <p class="tag">Each theme transforms the entire environment &mdash; textures, lighting, particles, NPC style, ambient atmosphere.</p>
+  <p class="tag">Each theme transforms the entire environment &mdash; textures, lighting, particles, NPC style, ambient atmosphere. Choose the world that matches your study vibe.</p>
 
   <div class="g3" style="margin-bottom:16px">
     <div class="theme-card">
@@ -520,213 +699,32 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
       </div>
     </div>
   </div>
-
-  <div class="g3">
-    <div style="background:var(--c1);padding:16px 18px;border:1px solid var(--b1)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Exploration</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:3px">Walk Around Like Minecraft</div>
-      <div style="font-size:10px;color:var(--mu);line-height:1.5">WASD to move, mouse to look. Students navigate naturally through rooms full of discoveries.</div>
-    </div>
-    <div style="background:var(--c1);padding:16px 18px;border:1px solid var(--b1)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">Friendly Guides</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:3px">AI Characters That Chat</div>
-      <div style="font-size:10px;color:var(--mu);line-height:1.5">Click on a guide to ask questions. They explain concepts at your level and quiz you to reinforce understanding.</div>
-    </div>
-    <div style="background:var(--c1);padding:16px 18px;border:1px solid var(--b1)">
-      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px">3D Artifacts</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:3px">Ideas You Can See</div>
-      <div style="font-size:10px;color:var(--mu);line-height:1.5">AI-generated 3D objects bring concepts to life &mdash; a spinning DNA helix for genetics, a benzene ring for organic chemistry.</div>
-    </div>
-  </div>
-</section>
-
-<!-- 06 HOW IT WORKS — Under the hood, simplified -->
-<section class="slide" id="s6">
-  <div class="sl"><span>06 / 11</span><div class="dot"></div><span>How It Works</span><div class="dot"></div><span class="acc">The Magic Behind It</span></div>
-  <h2>Simple for students.<br><span class="ac">Powerful underneath.</span></h2>
-  <p class="tag">Students see a seamless note-to-world pipeline. Behind the scenes, AI and procedural generation do the heavy lifting.</p>
-
-  <div class="tc">
-    <div>
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">What the student sees</div>
-      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1);margin-bottom:14px">
-        <div style="background:var(--c1);padding:14px 16px;border-left:3px solid var(--ac)">
-          <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px">Obsidian Plugin or Text Input</div>
-          <div style="font-size:12px;font-weight:700;margin-bottom:3px">"Select notes to explore"</div>
-          <div style="font-size:10px;color:var(--mu);line-height:1.5">Select Obsidian notes directly via the plugin, or type any topic: "cell biology," "organic chemistry," "world history"</div>
-        </div>
-        <div style="background:var(--c2);padding:14px 16px;border-left:3px solid var(--ac2)">
-          <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px">A Theme Picker</div>
-          <div style="font-size:12px;font-weight:700;margin-bottom:3px">"Choose your world"</div>
-          <div style="font-size:10px;color:var(--mu);line-height:1.5">Six beautiful themes to choose from &mdash; each one transforms the mood, colours, and atmosphere</div>
-        </div>
-        <div style="background:var(--c1);padding:14px 16px;border-left:3px solid var(--am)">
-          <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px">A Loading Screen With Wonder</div>
-          <div style="font-size:12px;font-weight:700;margin-bottom:3px">"Building your palace..."</div>
-          <div style="font-size:10px;color:var(--mu);line-height:1.5">Under 60 seconds &mdash; then you're dropped into a fully explorable 3D mind palace built from your own notes</div>
-        </div>
-      </div>
-
-      <div class="strip">
-        <span class="stag">OBSIDIAN-FIRST &mdash;</span>The primary input is the Obsidian plugin: select notes, click "Open in Palace," and your knowledge graph becomes a 3D world. <strong style="color:var(--tx)">Students use their own notes directly</strong> &mdash; no teacher setup required.
-      </div>
-    </div>
-
-    <div>
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">What happens behind the scenes</div>
-      <table class="tbl">
-        <thead><tr><th>Step</th><th>What Happens</th></tr></thead>
-        <tbody>
-          <tr><td>Topic &rarr; Concepts</td><td style="color:var(--ac)">AI breaks the topic into key ideas and relationships</td></tr>
-          <tr><td>Concepts &rarr; Layout</td><td style="color:var(--ac)">Related ideas placed in adjacent rooms automatically</td></tr>
-          <tr><td>Layout &rarr; World</td><td style="color:var(--ac)">Procedural generation builds the voxel environment</td></tr>
-          <tr><td>Concepts &rarr; Artifacts</td><td style="color:var(--ac)">AI generates unique 3D objects for each idea</td></tr>
-          <tr><td>Concepts &rarr; Guides</td><td style="color:var(--ac)">AI characters placed in rooms, ready to chat</td></tr>
-        </tbody>
-      </table>
-
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin:14px 0 8px">Built With</div>
-      <div style="display:flex;flex-wrap:wrap;gap:4px">
-        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">TypeScript</span>
-        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Babylon.js</span>
-        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Voxel Engine</span>
-        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Claude AI</span>
-        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Supabase</span>
-        <span style="padding:4px 8px;background:var(--c2);border:1px solid var(--b1);font-family:var(--m);font-size:8px;color:var(--t2)">Web Browser</span>
-      </div>
-
-      <div style="font-family:var(--m);font-size:8px;color:var(--mu);letter-spacing:.1em;text-transform:uppercase;margin:14px 0 8px">Accessibility</div>
-      <div style="display:flex;flex-direction:column;gap:1px;background:var(--b1);border:1px solid var(--b1)">
-        <div style="background:var(--c1);padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:11px">No installation required</span>
-          <span style="font-family:var(--m);font-size:9px;color:var(--ac)">Browser-based</span>
-        </div>
-        <div style="background:var(--c1);padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:11px">Works on school laptops</span>
-          <span style="font-family:var(--m);font-size:9px;color:var(--ac)">30+ FPS</span>
-        </div>
-        <div style="background:var(--c1);padding:10px 14px;display:flex;justify-content:space-between;align-items:center">
-          <span style="font-size:11px">No accounts needed</span>
-          <span style="font-family:var(--m);font-size:9px;color:var(--ac)">Zero friction</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 07 COMPARISON -->
-<section class="slide" id="s7">
-  <div class="sl"><span>07 / 11</span><div class="dot"></div><span>Comparison</span><div class="dot"></div><span class="acc">Why Loci Is Different</span></div>
-  <h2>How students study today<br><span class="ac">vs. how they could.</span></h2>
-  <p class="tag">Current tools either deliver content passively or gamify without depth. Loci does both &mdash; exploration <em>is</em> the revision.</p>
-
-  <table class="tbl" style="margin-bottom:16px">
-    <thead><tr>
-      <th>Approach</th><th>Creative</th><th>3D / Immersive</th><th>AI-Guided</th><th>Personalised</th><th>Builds Memory</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>Textbooks &amp; Worksheets</td><td class="no">&times;</td><td class="no">&times;</td><td class="no">&times;</td><td class="no">&times;</td><td class="no">&times; Passive</td></tr>
-      <tr><td>Educational Videos</td><td class="no">&times;</td><td class="my">~ Flat</td><td class="no">&times;</td><td class="no">&times;</td><td class="my">~ Watch only</td></tr>
-      <tr><td>Minecraft Education</td><td class="ok">&check;</td><td class="ok">&check;</td><td class="no">&times;</td><td class="my">~ Manual build</td><td class="my">~ If guided</td></tr>
-      <tr><td>Educational Games</td><td class="my">~ Limited</td><td class="my">~ Some</td><td class="my">~ Basic</td><td class="no">&times; Fixed</td><td class="my">~ Quiz-based</td></tr>
-      <tr class="hl"><td><strong>Loci</strong></td><td class="ok">&check; Generative</td><td class="ok">&check; Voxel</td><td class="ok">&check; AI guides</td><td class="ok">&check; Any topic</td><td class="ok">&check; Spatial</td></tr>
-    </tbody>
-  </table>
-
-  <div class="tc">
-    <div class="strip">
-      <span class="stag">KEY DIFFERENTIATOR &mdash;</span>Minecraft Education requires hours of manual world-building by teachers. Loci <strong style="color:var(--tx)">generates a complete learning world from any topic in under 60 seconds</strong> &mdash; with AI guides built in, ready to teach and ask questions.
-    </div>
-    <div style="display:flex;gap:1px;background:var(--b1);border:1px solid var(--b1)">
-      <div style="flex:1;background:var(--c1);padding:12px;text-align:center"><div style="font-family:var(--m);font-size:18px;font-weight:600;color:var(--ac)">&lt;60s</div><div style="font-family:var(--m);font-size:7.5px;color:var(--mu);margin-top:2px">WORLD GENERATION</div></div>
-      <div style="flex:1;background:var(--c1);padding:12px;text-align:center"><div style="font-family:var(--m);font-size:18px;font-weight:600;color:var(--ac)">0</div><div style="font-family:var(--m);font-size:7.5px;color:var(--mu);margin-top:2px">TEACHER SETUP</div></div>
-      <div style="flex:1;background:var(--c1);padding:12px;text-align:center"><div style="font-family:var(--m);font-size:18px;font-weight:600;color:var(--ac)">&infin;</div><div style="font-family:var(--m);font-size:7.5px;color:var(--mu);margin-top:2px">TOPICS POSSIBLE</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 08 SCIENCE -->
-<section class="slide" id="s8">
-  <div class="sl"><span>08 / 11</span><div class="dot"></div><span>Science</span><div class="dot"></div><span class="acc">Why It Works</span></div>
-  <h2>Backed by neuroscience.<br><span class="ac">Not just gamification.</span></h2>
-  <p class="tag">The Method of Loci activates the hippocampus &mdash; the brain's spatial navigation and memory formation centre. Loci automates the hardest part: building the palace itself.</p>
-
-  <div class="bg2" style="margin-bottom:16px">
-    <div class="bench">
-      <div class="bname">Spatial Memory Advantage</div>
-      <div class="bsub">Dresler et al. 2017 &middot; Neuron</div>
-      <div class="bbig">Significant</div>
-      <div class="bbar" style="width:70%"></div>
-      <div class="bdesc">Participants trained in the Method of Loci showed dramatically higher word recall than control groups &mdash; after just weeks of practice.</div>
-    </div>
-    <div class="bench">
-      <div class="bname">Long-Term Retention</div>
-      <div class="bsub">Maguire et al. 2003 &middot; Nature Neuroscience</div>
-      <div class="bbig">Months</div>
-      <div class="bbar" style="width:80%"></div>
-      <div class="bdesc">Memory champions using spatial techniques show superior recall months later &mdash; without additional review or practice.</div>
-    </div>
-    <div class="bench">
-      <div class="bname">Place Cells &amp; Grid Cells</div>
-      <div class="bsub">O'Keefe &amp; Moser &middot; 2014 Nobel Prize</div>
-      <div class="bbig">Nobel</div>
-      <div class="bbar" style="width:90%"></div>
-      <div class="bdesc">The 2014 Nobel Prize in Medicine confirmed the brain has a built-in GPS &mdash; place cells and grid cells that encode location as memory.</div>
-    </div>
-    <div class="bench">
-      <div class="bname">Multimedia Learning Theory</div>
-      <div class="bsub">Mayer 2009 &middot; Cambridge University Press</div>
-      <div class="bbig">3-in-1</div>
-      <div class="bbar" style="width:85%"></div>
-      <div class="bdesc">Combining visual, spatial, and verbal channels produces the strongest memory traces. Loci activates all three simultaneously.</div>
-    </div>
-  </div>
-
-  <div style="position:relative;border:1px solid var(--b1);overflow:hidden;max-width:820px;width:100%;margin-bottom:16px">
-    <img src="img/knowledge_graph.jpg" style="width:100%;height:200px;object-fit:cover;display:block;opacity:.5">
-    <div style="position:absolute;top:10px;left:12px;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">TRIPLE ENCODING — SPATIAL + VISUAL + SEMANTIC</div>
-    <div style="position:absolute;bottom:8px;right:10px;font-family:var(--m);font-size:7px;color:var(--mu)">KNOWLEDGE GRAPH TO 3D SPATIAL MEMORY</div>
-  </div>
-
-  <div style="display:flex;gap:16px;align-items:stretch;margin-top:16px">
-    <div class="strip" style="flex:1;margin-top:0">
-      <span class="stag">WHY LOCI WORKS FOR STUDENTS &mdash;</span>The brain encodes spatial information effortlessly &mdash; students remember every game map they've ever played. Loci harnesses this by combining <strong style="color:var(--tx)">three memory systems at once</strong>: spatial (exploring rooms), visual (3D artifacts), and verbal (conversations with AI guides). This is how the brain <em>wants</em> to learn.
-    </div>
-    <div style="flex:0 0 200px;position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px">
-      <img src="img/brain.jpg" style="width:100%;height:100%;display:block;opacity:.5;object-fit:cover">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(10,10,10,.85) 100%)"></div>
-      <div style="position:absolute;top:6px;left:8px;background:rgba(139,92,246,.85);padding:3px 7px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">Hippocampus</div>
-      <div style="position:absolute;bottom:8px;left:8px;right:8px">
-        <div style="font-family:var(--m);font-size:7px;color:var(--t2);letter-spacing:.06em;line-height:1.5">Place cells + Grid cells = spatial memory encoding</div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- 09 DEMO -->
 <section class="slide" id="s9" style="align-items:center">
   <div class="sl" style="justify-content:center"><span>09 / 11</span><div class="dot"></div><span>Demo</span><div class="dot"></div><span class="acc">See It Live</span></div>
-  <h2 style="text-align:center;margin-bottom:6px">A student selects their cell biology notes.<br><span class="ac">This is what happens next.</span></h2>
-  <p class="tag" style="text-align:center;margin:0 auto 22px;max-width:520px">In under 60 seconds, Loci builds a unique 3D world where every organelle is a room, every process is a corridor, and every NPC tutor is grounded in the student's own notes.</p>
+  <h2 style="text-align:center;margin-bottom:6px">From biology notes<br><span class="ac">to explorable world.</span></h2>
+  <p class="tag" style="text-align:center;margin:0 auto 22px;max-width:520px">12 notes. 28 concepts. 1 walkable palace. The Nucleus Room is the largest space (most connected concept). Professor Helix is the NPC guide. The DNA Double Helix is the 3D artifact.</p>
 
   <div class="g3" style="max-width:820px;width:100%;margin-bottom:18px">
     <div class="card" style="text-align:center">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">The student selects</div>
-      <div class="big" style="font-size:22px">"Cell Biology"</div>
-      <div class="ct">Any notes or topic works</div>
-      <div class="cd">Organic chemistry, world history, computer science, neuroscience &mdash; any subject a student is studying</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Input</div>
+      <div class="big" style="font-size:22px">12</div>
+      <div class="ct">Obsidian notes on cell biology</div>
+      <div class="cd">Markdown files with wikilinks, covering organelles, processes, and cellular structure</div>
     </div>
     <div class="card" style="text-align:center">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">AI builds the world</div>
-      <div class="big" style="font-size:28px;color:var(--ac2)">15</div>
-      <div class="ct">rooms generated</div>
-      <div class="cd">Nucleus at the centre, organelles as surrounding rooms, processes as corridors &mdash; all spatially encoded</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Knowledge Graph</div>
+      <div class="big" style="font-size:28px;color:var(--ac2)">28</div>
+      <div class="ct">concepts extracted</div>
+      <div class="cd">AI parses notes into concepts and relationships &mdash; nucleus, mitochondria, ATP, DNA, ribosomes, and more</div>
     </div>
     <div class="card" style="text-align:center">
-      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">The student explores</div>
-      <div class="big" style="font-size:28px;color:var(--am)">GO</div>
-      <div class="ct">dropped into the world</div>
-      <div class="cd">Walking, discovering, asking questions &mdash; every room a new surprise</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Output</div>
+      <div class="big" style="font-size:28px;color:var(--am)">1</div>
+      <div class="ct">walkable mind palace</div>
+      <div class="cd">Every concept is a room. Every relationship is a corridor. Every idea has a 3D artifact and an NPC guide.</div>
     </div>
   </div>
 
@@ -735,16 +733,16 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
       <div style="background:var(--c1);padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
         <div>
           <div style="font-size:12px;font-weight:700">The Nucleus Room</div>
-          <div style="font-size:10px;color:var(--mu);margin-top:2px">The grandest room &mdash; the central hub from which all cellular processes radiate</div>
+          <div style="font-size:10px;color:var(--mu);margin-top:2px">The largest room &mdash; most connected concept, central hub from which all cellular processes radiate</div>
         </div>
-        <span style="font-family:var(--m);font-size:9px;color:var(--ac)">central room</span>
+        <span style="font-family:var(--m);font-size:9px;color:var(--ac)">largest space</span>
       </div>
       <div style="background:var(--c2);padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
         <div>
           <div style="font-size:12px;font-weight:600">Guide: Professor Helix</div>
           <div style="font-size:10px;color:var(--mu);margin-top:2px">"The nucleus contains all the cell's genetic instructions. Can you explain why DNA replication must happen before mitosis?"</div>
         </div>
-        <span style="font-family:var(--m);font-size:9px;color:var(--ac2)">AI conversation</span>
+        <span style="font-family:var(--m);font-size:9px;color:var(--ac2)">NPC guide</span>
       </div>
       <div style="background:var(--c1);padding:14px 18px;display:flex;justify-content:space-between;align-items:center">
         <div>
@@ -756,56 +754,12 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
     </div>
   </div>
 
-  <!-- Annotated palace screenshot mockup -->
-  <div style="max-width:820px;width:100%;margin-top:18px;position:relative;border:1px solid var(--b1);overflow:hidden;border-radius:4px">
-    <img src="img/gaming.jpg" style="width:100%;display:block;opacity:.45;height:260px;object-fit:cover">
-    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.3) 50%,rgba(10,10,10,.6) 100%)"></div>
-
-    <!-- Top-left: HUD mockup -->
-    <div style="position:absolute;top:10px;left:12px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.3);padding:6px 10px;border-radius:3px">
-      <div style="font-family:var(--m);font-size:7px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px">World: Cell Biology</div>
-      <div style="font-family:var(--m);font-size:6px;color:var(--mu)">15 concepts &middot; 15 rooms &middot; Nature theme</div>
-    </div>
-
-    <!-- Annotation: Room label -->
-    <div style="position:absolute;top:55px;left:25%;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">
-      The Nucleus Room
-    </div>
-    <div style="position:absolute;top:68px;left:calc(25% + 40px);width:1px;height:30px;background:rgba(0,212,170,.5)"></div>
-
-    <!-- Annotation: NPC -->
-    <div style="position:absolute;top:70px;right:22%;background:rgba(139,92,246,.85);padding:3px 8px;font-family:var(--m);font-size:7px;color:#fff;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">
-      Guide: Professor Helix
-    </div>
-    <div style="position:absolute;top:83px;right:calc(22% + 30px);width:1px;height:25px;background:rgba(139,92,246,.5)"></div>
-
-    <!-- Annotation: Artifact -->
-    <div style="position:absolute;bottom:65px;left:15%;background:rgba(212,137,26,.85);padding:3px 8px;font-family:var(--m);font-size:7px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase;border-radius:2px">
-      Artifact: DNA Double Helix
-    </div>
-
-    <!-- Annotation: Corridor -->
-    <div style="position:absolute;bottom:65px;right:12%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:3px 8px;font-family:var(--m);font-size:7px;color:var(--tx);letter-spacing:.08em;text-transform:uppercase;border-radius:2px">
-      Corridor &rarr; Mitochondria Room
-    </div>
-
-    <!-- Bottom bar: controls hint -->
-    <div style="position:absolute;bottom:0;left:0;right:0;background:rgba(10,10,10,.85);border-top:1px solid var(--b1);padding:7px 14px;display:flex;justify-content:space-between;align-items:center">
-      <div style="display:flex;gap:12px">
-        <span style="font-family:var(--m);font-size:7px;color:var(--mu);letter-spacing:.08em">WASD MOVE</span>
-        <span style="font-family:var(--m);font-size:7px;color:var(--mu);letter-spacing:.08em">MOUSE LOOK</span>
-        <span style="font-family:var(--m);font-size:7px;color:var(--mu);letter-spacing:.08em">E INTERACT</span>
-      </div>
-      <span style="font-family:var(--m);font-size:7px;color:var(--ac);letter-spacing:.08em">30+ FPS &middot; NATURE THEME</span>
-    </div>
-  </div>
-
   <div style="position:relative;border:1px solid var(--b1);overflow:hidden;max-width:820px;width:100%;margin-top:18px;margin-bottom:18px">
     <img src="img/voxel_island.jpg" style="width:100%;height:280px;object-fit:cover;display:block;opacity:.55">
-    <div style="position:absolute;top:15px;left:15px;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">NUCLEUS ROOM — LARGEST SPACE</div>
-    <div style="position:absolute;top:50px;right:15px;background:rgba(139,92,246,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#fff;letter-spacing:.08em;text-transform:uppercase">PROFESSOR HELIX — NPC GUIDE</div>
-    <div style="position:absolute;bottom:35px;left:15px;background:rgba(212,137,26,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">DNA DOUBLE HELIX — 3D ARTIFACT</div>
-    <div style="position:absolute;bottom:8px;right:10px;font-family:var(--m);font-size:7px;color:var(--mu)">GENERATED FROM CELL BIOLOGY NOTES</div>
+    <div style="position:absolute;top:15px;left:15px;background:rgba(0,212,170,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">NUCLEUS ROOM &mdash; LARGEST SPACE</div>
+    <div style="position:absolute;top:50px;right:15px;background:rgba(139,92,246,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#fff;letter-spacing:.08em;text-transform:uppercase">PROFESSOR HELIX &mdash; NPC GUIDE</div>
+    <div style="position:absolute;bottom:35px;left:15px;background:rgba(212,137,26,.85);padding:3px 8px;font-family:var(--m);font-size:7.5px;color:#0a0a0a;letter-spacing:.08em;text-transform:uppercase">DNA DOUBLE HELIX &mdash; 3D ARTIFACT</div>
+    <div style="position:absolute;bottom:8px;right:10px;font-family:var(--m);font-size:7px;color:var(--mu)">GENERATED FROM 12 CELL BIOLOGY NOTES</div>
   </div>
 
   <div class="val" style="justify-content:center;margin-top:18px">
@@ -846,28 +800,28 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
 
 <!-- 11 CLOSE -->
 <section class="slide glow" id="s11">
-  <div class="sl"><span>11 / 11</span><div class="dot"></div><span>Vision</span><div class="dot"></div><span class="acc">The Future of Learning</span></div>
-  <h2>Every student deserves to learn<br><span class="ac">in a world built from their own notes.</span></h2>
-  <p class="tag" style="margin-bottom:28px">Not every student learns from re-reading. But every student remembers the worlds they explore.</p>
+  <div class="sl"><span>11 / 11</span><div class="dot"></div><span>Vision</span><div class="dot"></div><span class="acc">The Future</span></div>
+  <h2>Stop reading your notes.<br><span class="ac">Start walking through them.</span></h2>
+  <p class="tag" style="margin-bottom:28px">Every student has notes. Few remember them. Loci turns knowledge into worlds you walk through.</p>
 
   <div class="g3" style="margin-bottom:16px">
     <div class="card">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Consumers &rarr; Creators</div>
-      <div class="big" style="font-size:28px">Build</div>
-      <div class="ct">students create their own worlds</div>
-      <div class="cd">Every set of notes becomes a place. Every student becomes an explorer. Revision starts with "let me walk through it."</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Step 1</div>
+      <div class="big" style="font-size:28px">Your notes</div>
+      <div class="ct">the knowledge you already have</div>
+      <div class="cd">Obsidian, markdown, wikilinks &mdash; the knowledge graph you've already been building. Loci doesn't replace your workflow. It extends it into a third dimension.</div>
     </div>
     <div class="card">
-      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Passive &rarr; Spatial</div>
-      <div class="big" style="font-size:28px;color:var(--ac2)">Walk</div>
-      <div class="ct">through knowledge, not over it</div>
-      <div class="cd">Spatial memory is the brain's oldest trick. Loci builds the palace from your notes &mdash; your hippocampus does the rest.</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--ac2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Step 2</div>
+      <div class="big" style="font-size:28px;color:var(--ac2)">Your world</div>
+      <div class="ct">AI builds the palace for you</div>
+      <div class="cd">No more spending years building mental palaces room by room. AI generates an infinite number of unique worlds &mdash; one for every set of notes you have.</div>
     </div>
     <div class="card">
-      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Abstract &rarr; Tangible</div>
-      <div class="big" style="font-size:28px;color:var(--am)">Touch</div>
-      <div class="ct">ideas that were invisible before</div>
-      <div class="cd">Cell biology becomes rooms you walk through. Organic chemistry becomes corridors you explore. Abstract concepts become spatial memories.</div>
+      <div style="font-family:var(--m);font-size:8px;color:var(--am);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Step 3</div>
+      <div class="big" style="font-size:28px;color:var(--am)">Your memory</div>
+      <div class="ct">spatial encoding does the rest</div>
+      <div class="cd">Walk through rooms. Talk to NPC guides. Discover 3D artifacts. Your hippocampus encodes location as memory &mdash; the same system that remembers every game map you've ever played.</div>
     </div>
   </div>
 
@@ -878,19 +832,19 @@ h2{font-size:clamp(26px,3.6vw,48px);font-weight:800;line-height:1.04;letter-spac
         <div class="lb" style="width:36px;height:36px;font-size:13px;border-radius:6px">L</div>
         <div>
           <div style="font-size:18px;font-weight:800;letter-spacing:-.01em">Loci</div>
-          <div style="font-family:var(--m);font-size:8px;color:var(--mu);margin-top:2px">Where students build worlds to remember &middot; CSIRO Hackathon 2026</div>
+          <div style="font-family:var(--m);font-size:8px;color:var(--mu);margin-top:2px">Mind Palace Generator &middot; CSIRO Hackathon 2026</div>
         </div>
       </div>
       <div style="text-align:right">
-        <div style="font-size:16px;font-weight:800;color:var(--ac);margin-bottom:3px">Imagine a world where studying feels like exploring.</div>
-        <div style="font-size:10.5px;color:var(--mu);line-height:1.6">That world is Loci. Built from your notes. Ready to walk through.</div>
+        <div style="font-size:16px;font-weight:800;color:var(--ac);margin-bottom:3px">Every student has notes. Few remember them.</div>
+        <div style="font-size:10.5px;color:var(--mu);line-height:1.6">Loci turns knowledge into worlds you walk through. Your notes. Your world. Your memory.</div>
       </div>
     </div>
   </div>
 
   <div class="val" style="margin-top:18px">
     <div class="vl"></div>
-    THANK YOU &middot; LIVE DEMO AVAILABLE &middot; LET'S BUILD THE FUTURE OF LEARNING
+    THANK YOU &middot; LIVE DEMO AVAILABLE &middot; YOUR NOTES &middot; YOUR WORLD &middot; YOUR MEMORY
   </div>
 </section>
 
